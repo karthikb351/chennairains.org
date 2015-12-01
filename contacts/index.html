@@ -12,19 +12,19 @@
     <title>#ChennaiRains Resource Center</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/bs-3.3.5/jq-2.1.4,dt-1.10.10,r-2.0.0/datatables.min.css"/>
 
     <!-- Custom CSS -->
-    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,8 +51,8 @@
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-nav navbar-left">
-              <li class="active"><a href="./">Shelter <span class="sr-only">(current)</span></a></li>
-              <li><a href="/contacts">Contact Numbers</a></li>
+              <li><a href="../">Shelter</a></li>
+              <li class="active"><a href="./">Contact Numbers <span class="sr-only">(current)</span></a></li>
             </ul>
             <!-- /.navbar-top-links -->
         </nav>
@@ -60,15 +60,15 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Crowdsourced list of places and people offering shelter</h1>
+                    <h1 class="page-header">Contact numbers incase you need help</h1>
                     <div class="well">
                       <p></p>
                       <div class="input-group input-group-lg">
                         <span class="input-group-addon" id="sizing-addon1">Search</span>
-                        <input type="text" class="form-control" placeholder="Eg. Adyar" id="searchbox" aria-describedby="sizing-addon1">
+                        <input type="text" class="form-control" placeholder="Eg. Doctor, Boat, Emergency" id="searchbox" aria-describedby="sizing-addon1">
                       </div>
                       <br>
-                      <a class="btn btn-default btn-lg" target="_blank" href="https://docs.google.com/forms/d/13BJjGQKmKOtAc5sAOvELp-g1QrPc5hTRiJCg4fxOapM/viewform?fbzx=6144800557329761339">Contribute to the list</a>
+                      <a class="btn btn-default btn-lg" target="_blank" href="https://docs.google.com/spreadsheets/d/16igUy2WV8XIHYXTHl8VB76DdZc27i-yBbBct8gCOtIY/edit">Contribute to the list</a>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -99,25 +99,25 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
     <!-- DataTables JavaScript -->
     <script type="text/javascript" src="https://cdn.datatables.net/s/bs-3.3.5/jq-2.1.4,dt-1.10.10,r-2.0.0/datatables.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="dist/js/sb-admin-2.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
 
-    <script src="js/tabletop.js"></script>
+    <script src="../js/tabletop.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=16igUy2WV8XIHYXTHl8VB76DdZc27i-yBbBct8gCOtIY&output=html';
     var tableTop;
     var getKeys = function(obj) {
       var keys = [];
@@ -135,12 +135,8 @@
 
     var getRows = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Available for Shelter - Wednesday 2 Dec");
+      var sheet = tableTop.sheets("Sheet1");
       var rows=sheet.toArray();
-      for (var i = 0; i < rows.length; i++) {
-        rows[i].splice(0,1);
-      };
-      rows.splice(0,1);
       return rows;
       
     };
@@ -152,7 +148,7 @@
 
     var getColumns = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Available for Shelter - Wednesday 2 Dec");
+      var sheet = tableTop.sheets("Sheet1");
       //console.log(sheet);
       var temp = sheet['column_names'];
       var columns = [];
