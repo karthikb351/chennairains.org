@@ -130,7 +130,7 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1eGsS66xxlAO8MCmfyHS6isbpurwKQ1ucv6DaD31v3F8&output=html';
     var tableTop;
     var getKeys = function(obj) {
       var keys = [];
@@ -148,7 +148,7 @@
 
     var getRows = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Food Offerings");
+      var sheet = tableTop.sheets("Sheet1");
       var rows=sheet.toArray();
       for (var i = 0; i < rows.length; i++) {
         rows[i].splice(0,1);
@@ -166,7 +166,7 @@
 
     var getColumns = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Food Offerings");
+      var sheet = tableTop.sheets("Sheet1");
       //console.log(sheet);
       var temp = sheet['column_names'];
       var columns = [];
