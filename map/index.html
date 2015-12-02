@@ -150,7 +150,7 @@
 
     var getRows = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Available for Shelter - Wednesday 2 Dec");
+      var sheet = tableTop.sheets("New - Rescue Needed");
       var rows=sheet.toArray();
       for (var i = 0; i < rows.length; i++) {
         rows[i].splice(0,1);
@@ -169,7 +169,7 @@
 
     var getColumns = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Available for Shelter - Wednesday 2 Dec");
+      var sheet = tableTop.sheets("New - Rescue Needed");
       //console.log(sheet);
       var temp = sheet['column_names'];
       var columns = [];
@@ -206,23 +206,24 @@
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
         var pos = {
-          lat: parseFloat(row[8]),
-          lng: parseFloat(row[9])
+          lat: parseFloat(row[11]),
+          lng: parseFloat(row[12])
         }
         
         var marker = new google.maps.Marker({
           position: pos,
           map: map,
-          title: row[3]
+          title: row[4]
         });
 
-        var content = "<b>Category</b>: "+row[3]+"<br>"
-        +"<b>Contact</b>: "+row[1]+"<br>"
-        +"<b>No of people</b>: "+row[2]+"<br>"
-        +"<b>Type of Emergency</b>: "+row[5]+"<br>"
-        +"<b>Area</b>: "+row[4]+"<br>"
-        +"<b>Other info</b>: "+row[6]+"<br>"  
-        +"<b>Source</b>: "+row[7]+"<br>"  
+        var content = "<b>Category</b>: "+row[4]+"<br>"
+        +"<b>Contact</b>: "+row[2]+"<br>"
+        +"<b>No of people</b>: "+row[3]+"<br>"
+        +"<b>Type of Emergency</b>: "+row[6]+"<br>"
+        +"<b>Area</b>: "+row[5]+"<br>"
+        +"<b>Other info</b>: "+row[7]+"<br>"  
+        +"<b>Source</b>: "+row[8]+"<br>"
+        +"<a href='"+row[13]+"'>>>Google Maps Link</b><br>";
 
         var infowindow = new google.maps.InfoWindow();
 
@@ -239,20 +240,11 @@
     }
     function showInfo(dataSet, tabletop) {
       $("#loading").hide();
-      var sheet = tableTop.sheets("RESCUE NEEDED");
+      var sheet = tableTop.sheets("New - Rescue Needed");
       currentData = sheet.toArray();
+      
       plotPoints();
-      $("#searchbox").on("keyup search input paste cut", function() {
-        var temp = [];
-        for (var i = 0; i < currentData.length; i++) {
-          if(currentData[i].join(" ").indexOf(this.value) > -1)
-          { 
-            temp.push(currentData[i]);
-          }
-        };
-        currentData = temp;
-        plotPoints();
-      }); 
+      
       
     }
     function initMap() {
