@@ -36,12 +36,25 @@
       .dataTables_filter {
          display: none;
       }
+      .map_container{
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+      }
+      .map_container .map_canvas{
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: 0;
+          padding: 0;
+      }
     </style>
-
 </head>
 
 <body>
-    
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -62,12 +75,10 @@
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-nav navbar-left">
-              <li><a href="../">Shelters available</a></li>
-              <li><a href="../food">Food available <span class="sr-only">(current)</span></a></li>
-              <li class="active"><a href="contacts">Useful contacts details</a></li>
+              <li class="active"><a href="./">List of shelters <span class="sr-only">(current)</span></a></li>
+              <li><a href="contacts">Useful contacts details</a></li>
               <li><a href="http://bit.ly/ChennaiRescue">Need rescue?</a></li>
               <li><a href="http://bit.ly/ChennaiShelter">Offer shelter</a></li>
-              <li><a href="https://docs.google.com/forms/d/1MVaRWPPoKe6iA-IkK4kKaDu_Pf9ZKfXXht9hWv4Q144/viewform?fbzx=3074018613827252007">Offer food</a></li>
               <li><a href="http://bit.ly/VolunteerChennai">Volunteer with us</a></li>
             </ul>
             <!-- /.navbar-top-links -->
@@ -76,35 +87,21 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Contact numbers incase you need help</h1>
+                    <h1 class="page-header">Crowdsourced list of places and people offering shelter</h1>
                     <div class="well">
                       <p></p>
                       <div class="input-group input-group-lg">
                         <span class="input-group-addon" id="sizing-addon1">Search</span>
-                        <input type="text" class="form-control" placeholder="Eg. Doctor, Boat, Emergency" id="searchbox" aria-describedby="sizing-addon1">
+                        <input type="text" class="form-control" placeholder="Eg. Adyar" id="searchbox" aria-describedby="sizing-addon1">
                       </div>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="dataTable_wrapper table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                  <h1 id="loading">Fetching data</h1>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+            <div class="map_container">
+                <div id="map_canvas" class="map_canvas"></div>
+            </div>
         </div>
         <!-- /#page-wrapper -->
 
@@ -130,7 +127,7 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=16igUy2WV8XIHYXTHl8VB76DdZc27i-yBbBct8gCOtIY&output=html';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html';
     var tableTop;
     var getKeys = function(obj) {
       var keys = [];
@@ -148,12 +145,14 @@
 
     var getRows = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Sheet1");
+      var sheet = tableTop.sheets("Available for Shelter - Wednesday 2 Dec");
       var rows=sheet.toArray();
       for (var i = 0; i < rows.length; i++) {
+        rows[i].splice(0,1);
         var row = '<a href="tel:'+rows[i][3]+'">'+rows[i][3]+'</a>';
         rows[i][3]=row;
       };
+      rows.splice(0,1);
       return rows;
       
     };
@@ -165,7 +164,7 @@
 
     var getColumns = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Sheet1");
+      var sheet = tableTop.sheets("Available for Shelter - Wednesday 2 Dec");
       //console.log(sheet);
       var temp = sheet['column_names'];
       var columns = [];
@@ -181,9 +180,7 @@
     }
 
     $(document).ready(function() {
-      tableTop = Tabletop.init( { key: public_spreadsheet_url,
-                     callback: showInfo,
-                     simpleSheet: false } )
+      
       // var dataTable = $('#dataTables-example').DataTable( {
       //     data: rows,
       //     columns: columns,
@@ -198,17 +195,39 @@
     });
     function showInfo(dataSet, tabletop) {
       $("#loading").hide();
-      var dataTable = $('#dataTables-example').DataTable( {
-          data: getRows(dataSet),
-          columns: getColumns(dataSet),
-          "pageLength": 100,
-          responsive: false
-      } );
-      $("#searchbox").on("keyup search input paste cut", function() {
-         dataTable.search(this.value).draw();
-      }); 
+
+      var uluru = {lat: -25.363, lng: 131.044};
+      var map = new google.maps.Map(document.getElementById('map_canvas'), {
+        zoom: 4,
+        center: uluru
+      });
+
+      var contentString = "hello";
+
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+        title: 'Uluru (Ayers Rock)'
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+      
+    }
+    function initMap() {
+
+      tableTop = Tabletop.init( { key: public_spreadsheet_url,
+                     callback: showInfo,
+                     simpleSheet: false } )
+      
     }
     </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWTirWLEbCpz3pYNlX6OzVOiqZru0geOk&callback=initMap"></script>
 
 </body>
 

@@ -63,8 +63,8 @@
             <!-- /.navbar-header -->
             <ul class="nav navbar-nav navbar-left">
               <li><a href="../">Shelters available</a></li>
-              <li><a href="../food">Food available <span class="sr-only">(current)</span></a></li>
-              <li class="active"><a href="contacts">Useful contacts details</a></li>
+              <li class="active"><a href="./">Food available <span class="sr-only">(current)</span></a></li>
+              <li><a href="../contacts">Useful contacts details</span></a></li>
               <li><a href="http://bit.ly/ChennaiRescue">Need rescue?</a></li>
               <li><a href="http://bit.ly/ChennaiShelter">Offer shelter</a></li>
               <li><a href="https://docs.google.com/forms/d/1MVaRWPPoKe6iA-IkK4kKaDu_Pf9ZKfXXht9hWv4Q144/viewform?fbzx=3074018613827252007">Offer food</a></li>
@@ -76,12 +76,12 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Contact numbers incase you need help</h1>
+                    <h1 class="page-header">List of people and places offering food</h1>
                     <div class="well">
                       <p></p>
                       <div class="input-group input-group-lg">
                         <span class="input-group-addon" id="sizing-addon1">Search</span>
-                        <input type="text" class="form-control" placeholder="Eg. Doctor, Boat, Emergency" id="searchbox" aria-describedby="sizing-addon1">
+                        <input type="text" class="form-control" placeholder="Eg. Adyar" id="searchbox" aria-describedby="sizing-addon1">
                       </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -130,7 +130,7 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=16igUy2WV8XIHYXTHl8VB76DdZc27i-yBbBct8gCOtIY&output=html';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html';
     var tableTop;
     var getKeys = function(obj) {
       var keys = [];
@@ -148,11 +148,12 @@
 
     var getRows = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Sheet1");
+      var sheet = tableTop.sheets("Food Offerings");
       var rows=sheet.toArray();
       for (var i = 0; i < rows.length; i++) {
-        var row = '<a href="tel:'+rows[i][3]+'">'+rows[i][3]+'</a>';
-        rows[i][3]=row;
+        rows[i].splice(0,1);
+        var row = '<a href="tel:'+rows[i][0]+'">'+rows[i][0]+'</a>';
+        rows[i][0]=row;
       };
       return rows;
       
@@ -165,7 +166,7 @@
 
     var getColumns = function(obj) {
       //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Sheet1");
+      var sheet = tableTop.sheets("Food Offerings");
       //console.log(sheet);
       var temp = sheet['column_names'];
       var columns = [];
