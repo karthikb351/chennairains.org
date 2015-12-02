@@ -150,6 +150,8 @@
       var rows=sheet.toArray();
       for (var i = 0; i < rows.length; i++) {
         rows[i].splice(0,1);
+        var row = '<a href="tel:'+rows[i][3]+'">'+rows[i][3]+'</a>';
+        rows[i][3]=row;
       };
       rows.splice(0,1);
       return rows;

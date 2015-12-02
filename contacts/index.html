@@ -148,6 +148,10 @@
       //var sheets = getSheets(obj);
       var sheet = tableTop.sheets("Sheet1");
       var rows=sheet.toArray();
+      for (var i = 0; i < rows.length; i++) {
+        var row = '<a href="tel:'+rows[i][3]+'">'+rows[i][3]+'</a>';
+        rows[i][3]=row;
+      };
       return rows;
       
     };
