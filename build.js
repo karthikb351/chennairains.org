@@ -28,6 +28,12 @@ var sheets = [
   url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html',
   api: 'aid-available.json',
   sheetName: "AID OFFERING",
+},
+{
+  name: "Rescue",
+  url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1gqV12-qAuS-lwSjSy-WHMt2eSjW2h_OOh5xsiF1gWhI&output=html',
+  api: 'rescue.json',
+  sheetName: "New - Rescue Needed",
 }
 ];
 

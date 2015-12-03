@@ -184,21 +184,8 @@
       return columns;
     }
 
-    $(document).ready(function() {
-      
-      // var dataTable = $('#dataTables-example').DataTable( {
-      //     data: rows,
-      //     columns: columns,
-      //     "pageLength": 100,
-      //     responsive: true
-      // } );
-      
-      
-        
-    });
-
     var plotPoints = function () {
-      rows = currentData;
+      rows = currentData['rows'];
       var map = new google.maps.Map(document.getElementById('map_canvas'), {
         zoom: 11,
         center: {lat: 12.930579, lng: 80.214318}
@@ -238,20 +225,17 @@
       var uluru = {lat: -25.363, lng: 131.044};
 
     }
-    function showInfo(dataSet, tabletop) {
-      $("#loading").hide();
-      var sheet = tableTop.sheets("New - Rescue Needed");
-      currentData = sheet.toArray();
-      
-      plotPoints();
-      
-      
-    }
     function initMap() {
 
-      tableTop = Tabletop.init( { key: public_spreadsheet_url,
-                     callback: showInfo,
-                     simpleSheet: false } )
+      $.getJSON("../api/rescue.json", function(data) {
+        currentData = data;
+        $('#loading').hide();
+        plotPoints();
+      })
+      .error(function(err) {
+        console.log()
+       $('#loading').text('An error occurred');
+     });
       
     }
     </script>
