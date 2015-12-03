@@ -125,12 +125,9 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
-    <script src="../js/tabletop.js"></script>
-
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=16igUy2WV8XIHYXTHl8VB76DdZc27i-yBbBct8gCOtIY&output=html';
-    var tableTop;
+    var dataSet;
     var getKeys = function(obj) {
       var keys = [];
       for(var key in obj){
@@ -139,16 +136,8 @@
       return keys;
     };
 
-    var getSheets = function(obj){
-       var sheets = getKeys(obj);
-       //console.log(sheets);
-       return sheets;
-    };
-
     var getRows = function(obj) {
-      //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Sheet1");
-      var rows=sheet.toArray();
+      var rows=obj['rows'];
       for (var i = 0; i < rows.length; i++) {
         var row = '<a href="tel:'+rows[i][3]+'">'+rows[i][3]+'</a>';
         rows[i][3]=row;
@@ -163,10 +152,7 @@
     }
 
     var getColumns = function(obj) {
-      //var sheets = getSheets(obj);
-      var sheet = tableTop.sheets("Sheet1");
-      //console.log(sheet);
-      var temp = sheet['column_names'];
+      var temp = obj['columns'];
       var columns = [];
       for (var i = 0; i < temp.length; i++) {
         if (temp[i]!="Timestamp")
@@ -180,33 +166,25 @@
     }
 
     $(document).ready(function() {
-      tableTop = Tabletop.init( { key: public_spreadsheet_url,
-                     callback: showInfo,
-                     simpleSheet: false } )
-      // var dataTable = $('#dataTables-example').DataTable( {
-      //     data: rows,
-      //     columns: columns,
-      //     "pageLength": 100,
-      //     responsive: true
-      // } );
-      // $("#searchbox").on("keyup search input paste cut", function() {
-      //    dataTable.search(this.value).draw();
-      // }); 
-      
-        
-    });
-    function showInfo(dataSet, tabletop) {
-      $("#loading").hide();
-      var dataTable = $('#dataTables-example').DataTable( {
-          data: getRows(dataSet),
-          columns: getColumns(dataSet),
+      $.getJSON("https://raw.githubusercontent.com/karthikb351/chennairainstest/gh-pages/api/contacts.json", function(data) {
+        dataSet = data;
+        $('#loading').hide();
+        var dataTable = $('#dataTables-example').DataTable( {
+          data: getRows(data),
+          columns: getColumns(data),
           "pageLength": 100,
           responsive: false
-      } );
-      $("#searchbox").on("keyup search input paste cut", function() {
+        } );
+        $("#searchbox").on("keyup search input paste cut", function() {
          dataTable.search(this.value).draw();
-      }); 
-    }
+       }); 
+      })
+      .error(function() {
+       $('#loading').text('An error occurred');
+     });
+
+
+    });
     </script>
 
 </body>
