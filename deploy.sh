@@ -9,10 +9,9 @@ then
   mkdir out;  
 
   # generate required files
-  node generate-index.js  
+  node build.js  
 
   # copy over files to out folder
-  cp -r public/* out/
   cp -r src out/
   cp -r indexes out/
   # go to the out directory and create a *new* Git repo

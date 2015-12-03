@@ -9,7 +9,7 @@ function showInfo(dataSet, tabletop) {
     columns: tableTop.sheets("Sheet1")['column_names'],
     rows: tableTop.sheets("Sheet1").toArray()
   }
-  var file = 'api/aid-needed.json';
+  var file = 'out/api/aid-needed.json';
 
   jsonfile.writeFileSync(file, obj)
   console.log('saved');
