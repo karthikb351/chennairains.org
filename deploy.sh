@@ -8,12 +8,14 @@ then
   rm -rf out || exit 0;
   mkdir out;  
 
-  # generate required files
-  node build.js  
-
   # copy over files to out folder
   cp -r src out/
   cp -r indexes out/
+  
+  # generate required files
+  node build.js  
+
+
   # go to the out directory and create a *new* Git repo
   cd out
   git init  
