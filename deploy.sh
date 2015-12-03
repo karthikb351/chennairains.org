@@ -10,7 +10,6 @@ then
 
   # copy over files to out folder
   cp -r src out/
-  cp -r indexes out/
   
   # generate required files
   node build.js  
