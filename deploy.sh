@@ -4,19 +4,13 @@ if ([ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ])
 then
   set -e # exit with nonzero exit code if anything fails
 
-  # clear and re-create the out directory
-  rm -rf out || exit 0;
-  mkdir out;  
-
-  # copy over files to out folder
-  cp -r src out/
-  
   # generate required files
   node build.js  
 
 
   # go to the out directory and create a *new* Git repo
-  cd out
+  cd src
+  
   git init  
 
   # inside this git repo we'll pretend to be a new user
