@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '0.11'
+before_script:
+- chmod +x deploy.sh
+branches:
+  only:
+  - master
+after_success: ./deploy.sh
+env:
+  global:
+  - GH_REF: github.com/karthikb351/chennairainstest.git
+  - secure: ksmWtYdqZW9C19lmwLxayWuaR/TATeI5D+RD3JmXRO5c1rVa1YfPPVE0B/HeBB6LHtJJqqcAu6szzUtWYo4kxDm7vTvG4ADUuYZXF45qy0giibqmh58bejt0s0EDoUYorTvD51iREj4gSDr0DLSEXEXqFR5TkscFSm2GTMC8vFfzh7gc/vnyW09qZmeBAxuYJF4S+V2iCTLwf7yfzHyVruU5o12JkQbhV50NjIBHw6RLCSjHlZkAbfaVIUq85UOtar/7euzsC6MyQp9lCyP6z04ZEvTqfgxbnOXdQqfhuUXjMue7YZFLC7EP7Vg30G3sBHXZ0WKATzYtmXCjXNe/j4aiWVjzoMnB+jml245zFfdFLpPqEpAIl5cm7uCTRAIgaVNoFy2ivlvdEn7hbfmFBWYgaZdaHwG2KleOlEa05mBv5ArwlOkKn8uqjb89Jf/x0MSUsRjnKWu0g10yiXKnqejR510Dc1UFypH59jeyiwLNazuSB2LErGGh6eIvvCqQoCHL7ofOsu0dFwYuXS8O8x20an05V7GxiZssr3qm/4hvdjMLwkH6yaBWKx99tLEXJuWAk2nKtkLtKyRD/19q3YSNQufnDd+cZ8zmfLzVQzWM3KPlzwds8gTfzlL2/S4Um08BnY/Q8hxBnLP+GFrQjgN0JiGYMFRONYJyLgkmbJY=

@@ -1,0 +1,23 @@
+{
+  "name": "chennairains",
+  "version": "1.0.0",
+  "description": "Crowdsourced list of resources for people affected by the #ChennaiRains.",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthikb351/chennairains.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karthikb351/chennairains/issues"
+  },
+  "homepage": "https://github.com/karthikb351/chennairains#readme",
+  "dependencies": {
+    "jsonfile": "^2.2.3",
+    "tabletop": "^1.4.2"
+  }
+}
