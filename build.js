@@ -3,7 +3,6 @@ var jsonfile = require('jsonfile');
 var async = require('async');
 
 
-
 var sheets = [
 {
   name: "Aid Needed",
@@ -34,7 +33,13 @@ var sheets = [
   url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1gqV12-qAuS-lwSjSy-WHMt2eSjW2h_OOh5xsiF1gWhI&output=html',
   api: 'rescue.json',
   sheetName: "New - Rescue Needed",
-}
+},
+{
+  name: "Donations",
+  url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1b_TwedOK0BmgEDlv_MEp8-e9k1wixcSQ-he5rMjQPDQ&output=html',
+  api: 'donate.json',
+  sheetName: "Donation URLs",
+},
 ];
 
 async.forEach(sheets, function (item, callback){
