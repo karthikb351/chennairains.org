@@ -21,5 +21,6 @@ We have a quick and dirty API from the Google Spreadsheets we are using. Updated
  - http://chennairains.org/api/aid-available.json
  - http://chennairains.org/api/aid-needed.json
  - http://chennairains.org/api/contacts.json
+ - http://chennairains.org/api/donate.json
  - http://chennairains.org/api/rescue.json
 
