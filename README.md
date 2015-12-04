@@ -18,6 +18,7 @@ Crowdsourced list of resources for people affected by the #ChennaiRains.
 We have a quick and dirty API from the Google Spreadsheets we are using. Updated every 5 minutes.
 
  - http://chennairains.org/api/shelter.json
+ - http://chennairains.org/api/area-updates.json
  - http://chennairains.org/api/aid-available.json
  - http://chennairains.org/api/aid-needed.json
  - http://chennairains.org/api/contacts.json
