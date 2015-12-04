@@ -140,9 +140,12 @@
 
     var getRows = function(obj) {
       var rows=obj['rows'];
+      var idx = obj['columns'].indexOf("Source");
       for (var i = 0; i < rows.length; i++) {
-        var row = '<a href="'+rows[i][3]+'">'+rows[i][3]+'</a>';
-        rows[i][3]=row;
+        if(rows[i][idx].indexOf("http")>-1) {
+          var row = '<a href="'+rows[i][idx]+'">'+rows[i][idx]+'</a>';
+          rows[i][idx]=row;
+        }
       };
       return rows;
       

@@ -44,7 +44,7 @@ var sheets = [
   name: "Area Updates",
   url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1HQyV2LLXvevbREcE3DJVmyGd6PFxt0g1RNb8ePYTK88&output=html',
   api: 'area-updates.json',
-  sheetName: "Sheet1",
+  sheetName: "CurrentStatus",
 }
 ];
 
