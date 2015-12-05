@@ -170,7 +170,8 @@
                 data: getRows(data),
                 columns: getColumns(data),
                 "pageLength": 100,
-                responsive: false
+	        "order": [[ 1, "desc" ]],
+		responsive: false
               } );
               $("#searchbox").on("keyup search input paste cut", function() {
                dataTable.search(this.value).draw();
