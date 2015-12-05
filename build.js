@@ -50,7 +50,7 @@ var sheets = [
   name: "Safety Check",
   url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rtpdPrcnKMNdtWpeYk2YnPOuUgecxWpCGZWn-vGYV7k&output=html',
   api: 'safety-check.json',
-  sheetName: "chennairainsMissedCall",
+  sheetName: "Sheet1",
 }
 ];
 
