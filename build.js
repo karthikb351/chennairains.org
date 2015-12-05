@@ -45,6 +45,12 @@ var sheets = [
   url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1HQyV2LLXvevbREcE3DJVmyGd6PFxt0g1RNb8ePYTK88&output=html',
   api: 'area-updates.json',
   sheetName: "CurrentStatus",
+},
+{
+  name: "Safety Check",
+  url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rtpdPrcnKMNdtWpeYk2YnPOuUgecxWpCGZWn-vGYV7k&output=html',
+  api: 'safety-check.json',
+  sheetName: "chennairainsMissedCall",
 }
 ];
 
