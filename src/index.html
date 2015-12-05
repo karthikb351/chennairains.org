@@ -169,7 +169,7 @@
     }
 
     $(document).ready(function() {
-      $.getJSON("http://chennairains.org/api/shelter.json", function(data) {
+      $.getJSON("api/shelter.json", function(data) {
         dataSet = data;
         $('#loading').hide();
         var dataTable = $('#dataTables-example').DataTable( {

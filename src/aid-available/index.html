@@ -169,7 +169,7 @@
     }
 
     $(document).ready(function() {
-      $.getJSON("http://chennairains.org/api/aid-available.json", function(data) {
+      $.getJSON("../api/aid-available.json", function(data) {
         dataSet = data;
         $('#loading').hide();
         var dataTable = $('#dataTables-example').DataTable( {

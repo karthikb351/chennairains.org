@@ -168,7 +168,7 @@
     }
 
     $(document).ready(function() {
-      $.getJSON("http://chennairains.org/api/contacts.json", function(data) {
+      $.getJSON("../api/contacts.json", function(data) {
         dataSet = data;
         $('#loading').hide();
         var dataTable = $('#dataTables-example').DataTable( {

@@ -163,7 +163,7 @@
           }
 
           $(document).ready(function() {
-            $.getJSON("http://chennairains.org/api/aid-needed.json", function(data) {
+            $.getJSON("../api/aid-needed.json", function(data) {
               dataSet = data;
               $('#loading').hide();
               var dataTable = $('#dataTables-example').DataTable( {
