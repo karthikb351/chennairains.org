@@ -141,7 +141,7 @@
           var getRows = function(obj) {
             var rows=obj['rows'];
             for (var i = 0; i < rows.length; i++) {
-              rows[i].splice(0,1);
+//              rows[i].splice(0,1);
               var row = '<a href="tel:'+rows[i][3]+'">'+rows[i][3]+'</a>';
               rows[i][3]=row;
             };
@@ -153,11 +153,11 @@
             var temp = obj['columns'];
             var columns = [];
             for (var i = 0; i < temp.length; i++) {
-              if (temp[i]!="Timestamp")
+//              if (temp[i]!="Timestamp")
                 columns.push({
                   title:temp[i],
                 });
-            }
+//            }
             console.log(columns);
             return columns;
           }
