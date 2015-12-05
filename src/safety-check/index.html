@@ -158,7 +158,7 @@
       var temp = obj['columns'];
       var columns = [];
       for (var i = 0; i < temp.length; i++) {
-        if (temp[i]!="Timestamp" || temp[i]!="To" || temp[i]!="Adjusted Time Stamp")
+        if (temp[i]!="Timestamp" && temp[i]!="To" && temp[i]!="Adjusted Time Stamp")
           columns.push({
             title:temp[i],
             "sWidth": getColumnWidth(i)
