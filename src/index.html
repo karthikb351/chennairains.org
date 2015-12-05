@@ -130,6 +130,15 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     var dataSet;
+
+    var escHtml = function(str) {
+      return String(str).replace(/[<>]/g, function (c) {
+        switch (c){
+          case "<": return "&lt;";
+          case ">": return "&gt;";
+        }
+      });
+    };
     var getKeys = function(obj) {
       var keys = [];
       for(var key in obj){
@@ -141,6 +150,9 @@
       var rows=obj['rows'];
       for (var i = 0; i < rows.length; i++) {
         rows[i].splice(0,1);
+        for (var j = 0; j < rows[i].length; j++) {
+          rows[i][j] = escHtml(rows[i][j]);
+        }
         var row = '<a href="tel:'+rows[i][3]+'">'+rows[i][3]+'</a>';
         rows[i][3]=row;
       };
