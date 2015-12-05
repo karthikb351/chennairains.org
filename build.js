@@ -51,6 +51,12 @@ var sheets = [
   url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rtpdPrcnKMNdtWpeYk2YnPOuUgecxWpCGZWn-vGYV7k&output=html',
   api: 'safety-check.json',
   sheetName: "Sheet1",
+},
+{
+  name: "Verified Volunteers",
+  url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html',
+  api: 'verified-volunteers.json',
+  sheetName: "5 DEC - VERIFIED VOLUNTEER LIST",
 }
 ];
 
