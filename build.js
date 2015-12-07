@@ -5,34 +5,10 @@ var async = require('async');
 
 var sheets = [
 {
-  name: "Aid Needed",
-  url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html',
-  api: 'aid-needed.json',
-  sheetName: "NEED AID",
-},
-{
   name: "Contacts",
   url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=16igUy2WV8XIHYXTHl8VB76DdZc27i-yBbBct8gCOtIY&output=html',
   api: 'contacts.json',
   sheetName: "Sheet1",
-},
-{
-  name: "Shelter",
-  url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html',
-  api: 'shelter.json',
-  sheetName: "Available for Shelter - Thu 3 Dec/Fri 4 Dec",
-},
-{
-  name: "Aid Available",
-  url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html',
-  api: 'aid-available.json',
-  sheetName: "AID OFFERING",
-},
-{
-  name: "Rescue",
-  url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1gqV12-qAuS-lwSjSy-WHMt2eSjW2h_OOh5xsiF1gWhI&output=html',
-  api: 'rescue.json',
-  sheetName: "New - Rescue Needed",
 },
 {
   name: "Donations",
@@ -51,12 +27,6 @@ var sheets = [
   url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rtpdPrcnKMNdtWpeYk2YnPOuUgecxWpCGZWn-vGYV7k&output=html',
   api: 'safety-check.json',
   sheetName: "Sheet1",
-},
-{
-  name: "Verified Volunteers",
-  url: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=1rZc3e9scewKxbZBn0vfDqkxOTy_NJYUBSfsVPgnkmdY&output=html',
-  api: 'verified-volunteers.json',
-  sheetName: "5 DEC - VERIFIED VOLUNTEER LIST",
 }
 ];
 
